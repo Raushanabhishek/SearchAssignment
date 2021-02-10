@@ -1,0 +1,41 @@
+<template>
+    <lightning-card title="Movie Details" icon-name="standard:account">
+            <lightning-layout>
+                <lightning-layout-item size="6" padding="around-small">
+                    <lightning-input type="text" label="Enter Movie Name" placeholder="type here..." required></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="6" padding="around-small">
+                    <div style="margin-top:24px;">
+                        <lightning-button variant="brand" label="Submit" title="Click to get movie details" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+                    </div>
+                </lightning-layout-item>
+            </lightning-layout>
+
+        <template if:true={isShowDataTable}>
+            <div style="height: 300px;">
+                
+                    <c-movie-details-datatable
+                        key-field="id"
+                        data={data}
+                        show-row-number-column="true"
+                        hide-checkbox-column="false"
+                        columns={columns}>
+                    </c-movie-details-datatable>
+                
+            </div>
+            <lightning-layout horizontal-align="space">
+                <lightning-layout-item flexibility="auto">
+                    <lightning-button label="Previous" icon-name="utility:chevronleft" onclick={previousHandler}>
+                    </lightning-button>
+                </lightning-layout-item>
+                <lightning-layout-item flexibility="auto">
+                    Page {page} of {totalPage}
+                </lightning-layout-item>
+                <lightning-layout-item flexibility="auto">
+                    <lightning-button label="Next" icon-name="utility:chevronright" icon-position="right"
+                        onclick={nextHandler}></lightning-button>
+                </lightning-layout-item>
+            </lightning-layout>
+        </template>
+    </lightning-card>
+</template> 
